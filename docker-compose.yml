@@ -1,2 +1,38 @@
 version: "3.9"
-services: {}
+
+services:
+  servicio-bdpostgres:
+    container_name: servicio-bdpostgres
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: dalctuser
+      POSTGRES_PASSWORD: Dalct@1234
+      POSTGRES_DB: dalctmarket
+    volumes:
+      - dalctmarket-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dalctuser -d dalctmarket"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  servicio-backend:
+    container_name: servicio-backend
+    build: ./backend
+    restart: always
+    depends_on:
+      servicio-bdpostgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://dalctuser:Dalct@1234@db-postgres:5432/dalctmarket
+    ports:
+      - "8000:8000"
+volumes:
+  dalctmarket-data:
+
+#docker-compose up --build
+#docker-compose down -v
