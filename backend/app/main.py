@@ -11,6 +11,9 @@ from app.Usuarios.controllers.usuarioController import publicRouter as controlad
 from app.Usuarios.repositories.usuarioRepository import UsuarioRepository
 from app.Usuarios.controllers.rolController import router as controladorRoles
 from app.Usuarios.repositories.rolRepository import RolRepository
+# Parametros de sistema
+from app.ParametrosSistema.controllers.parametroSistemaController import router as controladorParametrosSistema
+from app.ParametrosSistema.repositories.parametroSistemaRepository import ParametroSistemaRepository
 
 
 app = FastAPI(
@@ -28,6 +31,7 @@ async def startup_event():
     #Crear datos por defecto
     RolRepository(obtenerSesionDirecta()).crearRolesPorDefecto()
     UsuarioRepository(obtenerSesionDirecta()).crearUsuariosIniciales()
+    ParametroSistemaRepository(obtenerSesionDirecta()).crearParametrosIniciales()
 
 @app.get("/")
 def inicio(usuarioActual=Depends(protegerRuta("Prueba", "ALL"))):
@@ -39,6 +43,7 @@ def inicio(usuarioActual=Depends(protegerRuta("Prueba", "ALL"))):
 app.include_router(controladorUsuariosPublic,prefix="/usuarios", tags=["Usuarios"])
 app.include_router(controladorUsuarios,prefix="/usuarios", tags=["Usuarios"])
 app.include_router(controladorRoles,prefix="/roles", tags=["Roles"])
+app.include_router(controladorParametrosSistema,prefix="/parametrosistema", tags=["ParametrosSistema"])
 
 
 
