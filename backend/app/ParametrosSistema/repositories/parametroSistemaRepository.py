@@ -55,7 +55,6 @@ class ParametroSistemaRepository:
         self.dbSession.refresh(parametro)
         return parametro
 
-
     def crearParametrosIniciales(self):
         parametrosIniciales = [
             {"claveParametro": "nombreNegocio", "valorParametro": "DALCT Market"},

@@ -10,7 +10,9 @@ class UsuarioService:
 
 
     def validarCredenciales(self, cedula, password):
+        print(cedula, password)
         usuario=self.usuarioRepository.validarCredenciales(cedula, password)
+        print(usuario)
         if usuario is None:
             raise HTTPException(status_code=401, detail="Credenciales incorrectas")
       

@@ -59,6 +59,7 @@ class ClienteRepository:
             {"nombreCliente": "Ana Morales", "cedulaCliente": "1723344556", "telefonoCliente": "0992233445", "direccionCliente": "Calle Los Pinos N12-34, Quito, Ecuador", "emailCliente": "ana.morales@example.com", "activoCliente": True},
             {"nombreCliente": "Carlos Ramírez", "cedulaCliente": "1724455667", "telefonoCliente": "0983344556", "direccionCliente": "Av. Shyris N45-67, Quito, Ecuador", "emailCliente": "carlos.ramirez@example.com", "activoCliente": True},
             {"nombreCliente": "Paola Fernández", "cedulaCliente": "1725566778", "telefonoCliente": "0994455667", "direccionCliente": "Calle Guayaquil N78-90, Quito, Ecuador", "emailCliente": "paola.fernandez@example.com", "activoCliente": True},
+            {"nombreCliente": "Consumidor Final", "cedulaCliente": "9999999999", "telefonoCliente": "0000000000", "direccionCliente": "No especifica", "emailCliente": "consumidor.final@ejemplo.com", "activoCliente": True}
         ]
         for c in clientes:
             existe = self.validarCedulaExistente(c["cedulaCliente"]) 

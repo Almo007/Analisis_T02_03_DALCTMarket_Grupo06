@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 BASEDATOS_URL = os.getenv(
-    "DATABASE_URL","postgresql://dalctuser:Dalct1234@localhost:5432/dalctmarket"
+    "DATABASE_URL","postgresql://dalctuser:Dalct1234@servicio-bdpostgres:5432/dalctmarket"
 )
 
 engine = create_engine(BASEDATOS_URL)

@@ -65,11 +65,11 @@ class UsuarioRepository:
             {"nombreCompleto": "admin", "cedulaUsuario": "admin", "emailUsuario": "admin@example.com", "passwordUsuario": "1234", "idRol": 1},
             {"nombreCompleto": "bodeguero", "cedulaUsuario": "bodeguero", "emailUsuario": "bodeguero@example.com", "passwordUsuario": "1234", "idRol": 2},
             {"nombreCompleto": "cajero", "cedulaUsuario": "cajero", "emailUsuario": "cajero@example.com", "passwordUsuario": "1234", "idRol": 3},
-            {"nombreCompleto": "Damian Barahona", "cedulaUsuario": "1750834515", "emailUsuario": "damian@example.com", "passwordUsuario": "Cl@veSegura123", "idRol": 1},
-            {"nombreCompleto": "Kenin Cayambe", "cedulaUsuario": "1750834516", "emailUsuario": "kenin@example.com", "passwordUsuario": "Cl@veSegura123", "idRol": 2},
-            {"nombreCompleto": "Sthalin Chasipanta", "cedulaUsuario": "1750834517", "emailUsuario": "sthali@example.com", "passwordUsuario": "Cl@veSegura123", "idRol": 2},
-            {"nombreCompleto": "Cristian Licto", "cedulaUsuario": "1750834518", "emailUsuario": "cristian@example.com", "passwordUsuario": "Cl@veSegura123", "idRol": 3},
-            {"nombreCompleto": "Juan Tandazo", "cedulaUsuario": "1750834519", "emailUsuario": "juan@example.com", "passwordUsuario": "Cl@veSegura123", "idRol": 3},
+            {"nombreCompleto": "Damian Barahona", "cedulaUsuario": "1750834515", "emailUsuario": "damian@example.com", "passwordUsuario": "1234", "idRol": 1},
+            {"nombreCompleto": "Kenin Cayambe", "cedulaUsuario": "1750834516", "emailUsuario": "kenin@example.com", "passwordUsuario": "1234", "idRol": 2},
+            {"nombreCompleto": "Sthalin Chasipanta", "cedulaUsuario": "1750834517", "emailUsuario": "sthali@example.com", "passwordUsuario": "1234", "idRol": 2},
+            {"nombreCompleto": "Cristian Licto", "cedulaUsuario": "1750834518", "emailUsuario": "cristian@example.com", "passwordUsuario": "1234", "idRol": 3},
+            {"nombreCompleto": "Juan Tandazo", "cedulaUsuario": "1750834519", "emailUsuario": "juan@example.com", "passwordUsuario": "1234", "idRol": 3},
 
         ]
 

@@ -137,35 +137,35 @@ class ProductoRepository:
 
     def crearProductosIniciales(self):
         productos = [
-            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Cola 2 Litros", "descripcionProducto": "Bebida gaseosa sabor cola", "precioUnitarioVenta": 2.50, "precioUnitarioCompra": 1.80, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Jugo de Naranja 1L", "descripcionProducto": "Jugo natural pasteurizado", "precioUnitarioVenta": 1.80, "precioUnitarioCompra": 1.20, "tieneIva": False, "activoProducto": True},
-            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Agua Mineral 600ml", "descripcionProducto": "Agua sin gas", "precioUnitarioVenta": 0.70, "precioUnitarioCompra": 0.40, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Bebida Energética", "descripcionProducto": "Bebida energizante lata", "precioUnitarioVenta": 2.20, "precioUnitarioCompra": 1.50, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Té Frío Limón", "descripcionProducto": "Té frío sabor limón", "precioUnitarioVenta": 1.50, "precioUnitarioCompra": 1.00, "tieneIva": True, "activoProducto": True},
+            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Cola 2 Litros", "descripcionProducto": "Bebida gaseosa sabor cola", "precioUnitarioVenta": 2.50, "precioUnitarioCompra": 1.80, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 100, "cantidadMinima": 10},
+            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Jugo de Naranja 1L", "descripcionProducto": "Jugo natural pasteurizado", "precioUnitarioVenta": 1.80, "precioUnitarioCompra": 1.20, "tieneIva": False, "activoProducto": True, "cantidadDisponible": 80, "cantidadMinima": 10},
+            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Agua Mineral 600ml", "descripcionProducto": "Agua sin gas", "precioUnitarioVenta": 0.70, "precioUnitarioCompra": 0.40, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 200, "cantidadMinima": 20},
+            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Bebida Energética", "descripcionProducto": "Bebida energizante lata", "precioUnitarioVenta": 2.20, "precioUnitarioCompra": 1.50, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 60, "cantidadMinima": 8},
+            {"idCategoriaProducto": 1, "idProveedor": 1, "nombreProducto": "Té Frío Limón", "descripcionProducto": "Té frío sabor limón", "precioUnitarioVenta": 1.50, "precioUnitarioCompra": 1.00, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 90, "cantidadMinima": 10},
 
-            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Papas Fritas Clásicas", "descripcionProducto": "Papas fritas bolsa mediana", "precioUnitarioVenta": 1.25, "precioUnitarioCompra": 0.80, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Galletas de Chocolate", "descripcionProducto": "Galletas rellenas", "precioUnitarioVenta": 1.10, "precioUnitarioCompra": 0.75, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Maní Salado", "descripcionProducto": "Maní tostado y salado", "precioUnitarioVenta": 0.90, "precioUnitarioCompra": 0.50, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Chifles", "descripcionProducto": "Plátano frito en rodajas", "precioUnitarioVenta": 1.00, "precioUnitarioCompra": 0.65, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Barra de Cereal", "descripcionProducto": "Barra energética", "precioUnitarioVenta": 0.85, "precioUnitarioCompra": 0.55, "tieneIva": True, "activoProducto": True},
+            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Papas Fritas Clásicas", "descripcionProducto": "Papas fritas bolsa mediana", "precioUnitarioVenta": 1.25, "precioUnitarioCompra": 0.80, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 120, "cantidadMinima": 15},
+            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Galletas de Chocolate", "descripcionProducto": "Galletas rellenas", "precioUnitarioVenta": 1.10, "precioUnitarioCompra": 0.75, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 150, "cantidadMinima": 20},
+            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Maní Salado", "descripcionProducto": "Maní tostado y salado", "precioUnitarioVenta": 0.90, "precioUnitarioCompra": 0.50, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 80, "cantidadMinima": 10},
+            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Chifles", "descripcionProducto": "Plátano frito en rodajas", "precioUnitarioVenta": 1.00, "precioUnitarioCompra": 0.65, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 60, "cantidadMinima": 10},
+            {"idCategoriaProducto": 2, "idProveedor": 2, "nombreProducto": "Barra de Cereal", "descripcionProducto": "Barra energética", "precioUnitarioVenta": 0.85, "precioUnitarioCompra": 0.55, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 200, "cantidadMinima": 20},
 
-            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Arroz 5 Libras", "descripcionProducto": "Arroz blanco grano largo", "precioUnitarioVenta": 3.20, "precioUnitarioCompra": 2.60, "tieneIva": False, "activoProducto": True},
-            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Azúcar 2 Libras", "descripcionProducto": "Azúcar refinada", "precioUnitarioVenta": 1.90, "precioUnitarioCompra": 1.40, "tieneIva": False, "activoProducto": True},
-            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Aceite Vegetal 1L", "descripcionProducto": "Aceite comestible", "precioUnitarioVenta": 3.80, "precioUnitarioCompra": 3.10, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Fideos Spaghetti", "descripcionProducto": "Pasta seca", "precioUnitarioVenta": 1.40, "precioUnitarioCompra": 0.95, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Atún en Lata", "descripcionProducto": "Atún en aceite", "precioUnitarioVenta": 1.75, "precioUnitarioCompra": 1.20, "tieneIva": True, "activoProducto": True},
+            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Arroz 5 Libras", "descripcionProducto": "Arroz blanco grano largo", "precioUnitarioVenta": 3.20, "precioUnitarioCompra": 2.60, "tieneIva": False, "activoProducto": True, "cantidadDisponible": 40, "cantidadMinima": 10},
+            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Azúcar 2 Libras", "descripcionProducto": "Azúcar refinada", "precioUnitarioVenta": 1.90, "precioUnitarioCompra": 1.40, "tieneIva": False, "activoProducto": True, "cantidadDisponible": 60, "cantidadMinima": 10},
+            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Aceite Vegetal 1L", "descripcionProducto": "Aceite comestible", "precioUnitarioVenta": 3.80, "precioUnitarioCompra": 3.10, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 75, "cantidadMinima": 10},
+            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Fideos Spaghetti", "descripcionProducto": "Pasta seca", "precioUnitarioVenta": 1.40, "precioUnitarioCompra": 0.95, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 120, "cantidadMinima": 20},
+            {"idCategoriaProducto": 3, "idProveedor": 3, "nombreProducto": "Atún en Lata", "descripcionProducto": "Atún en aceite", "precioUnitarioVenta": 1.75, "precioUnitarioCompra": 1.20, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 90, "cantidadMinima": 15},
 
-            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Detergente en Polvo", "descripcionProducto": "Detergente multiuso", "precioUnitarioVenta": 4.50, "precioUnitarioCompra": 3.60, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Cloro 1L", "descripcionProducto": "Desinfectante", "precioUnitarioVenta": 1.20, "precioUnitarioCompra": 0.80, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Esponjas", "descripcionProducto": "Esponjas para lavar", "precioUnitarioVenta": 1.00, "precioUnitarioCompra": 0.60, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Limpiavidrios", "descripcionProducto": "Limpieza de superficies", "precioUnitarioVenta": 2.30, "precioUnitarioCompra": 1.70, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Desinfectante Piso", "descripcionProducto": "Aroma floral", "precioUnitarioVenta": 2.80, "precioUnitarioCompra": 2.10, "tieneIva": True, "activoProducto": True},
+            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Detergente en Polvo", "descripcionProducto": "Detergente multiuso", "precioUnitarioVenta": 4.50, "precioUnitarioCompra": 3.60, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 50, "cantidadMinima": 10},
+            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Cloro 1L", "descripcionProducto": "Desinfectante", "precioUnitarioVenta": 1.20, "precioUnitarioCompra": 0.80, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 100, "cantidadMinima": 20},
+            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Esponjas", "descripcionProducto": "Esponjas para lavar", "precioUnitarioVenta": 1.00, "precioUnitarioCompra": 0.60, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 250, "cantidadMinima": 30},
+            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Limpiavidrios", "descripcionProducto": "Limpieza de superficies", "precioUnitarioVenta": 2.30, "precioUnitarioCompra": 1.70, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 60, "cantidadMinima": 10},
+            {"idCategoriaProducto": 4, "idProveedor": 4, "nombreProducto": "Desinfectante Piso", "descripcionProducto": "Aroma floral", "precioUnitarioVenta": 2.80, "precioUnitarioCompra": 2.10, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 40, "cantidadMinima": 8},
 
-            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Jabón de Baño", "descripcionProducto": "Jabón antibacterial", "precioUnitarioVenta": 1.10, "precioUnitarioCompra": 0.70, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Shampoo", "descripcionProducto": "Shampoo familiar", "precioUnitarioVenta": 4.20, "precioUnitarioCompra": 3.30, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Pasta Dental", "descripcionProducto": "Protección dental", "precioUnitarioVenta": 2.50, "precioUnitarioCompra": 1.90, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Papel Higiénico", "descripcionProducto": "Paquete 4 rollos", "precioUnitarioVenta": 3.60, "precioUnitarioCompra": 2.80, "tieneIva": True, "activoProducto": True},
-            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Desodorante", "descripcionProducto": "Protección 24 horas", "precioUnitarioVenta": 3.90, "precioUnitarioCompra": 3.00, "tieneIva": True, "activoProducto": True},
+            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Jabón de Baño", "descripcionProducto": "Jabón antibacterial", "precioUnitarioVenta": 1.10, "precioUnitarioCompra": 0.70, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 180, "cantidadMinima": 30},
+            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Shampoo", "descripcionProducto": "Shampoo familiar", "precioUnitarioVenta": 4.20, "precioUnitarioCompra": 3.30, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 45, "cantidadMinima": 8},
+            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Pasta Dental", "descripcionProducto": "Protección dental", "precioUnitarioVenta": 2.50, "precioUnitarioCompra": 1.90, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 110, "cantidadMinima": 20},
+            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Papel Higiénico", "descripcionProducto": "Paquete 4 rollos", "precioUnitarioVenta": 3.60, "precioUnitarioCompra": 2.80, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 70, "cantidadMinima": 10},
+            {"idCategoriaProducto": 5, "idProveedor": 5, "nombreProducto": "Desodorante", "descripcionProducto": "Protección 24 horas", "precioUnitarioVenta": 3.90, "precioUnitarioCompra": 3.00, "tieneIva": True, "activoProducto": True, "cantidadDisponible": 65, "cantidadMinima": 10},
         ]
 
         for p in productos:
@@ -175,7 +175,10 @@ class ProductoRepository:
                 cat = self.dbSession.query(CategoriaProducto).filter(CategoriaProducto.idCategoriaProducto == p["idCategoriaProducto"]).first()
                 prov = self.dbSession.query(Proveedor).filter(Proveedor.idProveedor == p["idProveedor"]).first()
                 if cat and prov:
-                    nuevo = Producto(**p)
+                    # Excluir campos de inventario al crear Producto
+                    datos_producto = {k: v for k, v in p.items() if k not in ("cantidadDisponible", "cantidadMinima")}
+                    datos_producto.setdefault("activoProducto", True)
+                    nuevo = Producto(**datos_producto)
                     self.dbSession.add(nuevo)
                     # flush para obtener el idProducto y crear inventario inicial si no existe
                     self.dbSession.flush()

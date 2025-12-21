@@ -13,7 +13,16 @@ class Usuario(Base):
     activoUsuario = Column(Boolean, default=True)
 
     rol = relationship("Rol")
-    #ventas = relationship("Venta", back_populates="usuario")
-    #pedidosCreados = relationship("Pedido", foreign_keys="Pedido.idUsuarioCreador")
-    #pedidosAprobados = relationship("Pedido", foreign_keys="Pedido.idUsuarioAprobador")
-    #cajas = relationship("CajaHistorial", back_populates="usuario")
+    ventas = relationship("Venta", back_populates="usuario")
+    cajas = relationship("CajaHistorial", back_populates="usuario")
+    pedidosCreados = relationship(
+        "Pedido",
+        foreign_keys="Pedido.idUsuarioCreador",
+        back_populates="usuarioCreador"
+    )
+
+    pedidosAprobados = relationship(
+        "Pedido",
+        foreign_keys="Pedido.idUsuarioAprobador",
+        back_populates="usuarioAprobador"
+    )

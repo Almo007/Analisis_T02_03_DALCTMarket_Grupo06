@@ -13,7 +13,7 @@ from app.configuracionGeneral.errores import ERROR_TOKEN_INVALIDO
 
 SECRET_KEY = os.environ.get("SECRET_KEY","secreto")
 ALGORITHM = os.environ.get("ALGORITHM","HS256")
-ACCESS_TOKEN_EXPIRE_MINUTES = os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", 30)
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30))
 #Todas las funciones con camelCase y español
 
 def crearTokenJWT(datos:dict)->str:

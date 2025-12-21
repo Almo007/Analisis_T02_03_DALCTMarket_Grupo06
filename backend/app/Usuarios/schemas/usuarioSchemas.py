@@ -60,6 +60,18 @@ class UsuarioRespuestaSchema(BaseModel):
         from_attributes = True
 
 
+# Schema público paralelo que NO devuelve la contraseña
+class UsuarioPublicoSchema(BaseModel):
+    idUsuario: int
+    nombreCompleto: str
+    cedulaUsuario: str
+    emailUsuario: EmailStr
+    rol: RolSchema
+    activoUsuario: bool
+    class Config:
+        from_attributes = True
+
+
 
     
     
