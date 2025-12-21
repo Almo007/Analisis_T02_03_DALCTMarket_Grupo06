@@ -41,24 +41,41 @@ oauth2Scheme = OAuth2PasswordBearer(tokenUrl="/usuarios/loginSwagger",auto_error
 #Validador de token y permisos según el rol
 permisos = {
     "Prueba": {"Administrador": "ALL", "Bodeguero": "ALL", "Cajero": "ALL"},
-    "ParametrosSistema": {"Administrador": "ALL", "Bodeguero": ["ALL"], "Cajero": []},
+    "ParametrosSistema": {"Administrador": "ALL", "Bodeguero": [], "Cajero": []},
     "Usuarios": {"Administrador": "ALL", "Bodeguero": [], "Cajero": []},
-    "Productos": {"Administrador": "ALL", "Bodeguero": ["GET","POST","PUT"], "Cajero": ["GET"]},
-    "Inventario": {"Administrador": "ALL", "Bodeguero": ["GET","PUT"], "Cajero": ["GET"]},
-    "Pedido": {"Administrador": ["GET","PUT"], "Bodeguero": ["GET","POST"], "Cajero": []},
-    "Venta": {"Administrador": "ALL", "Bodeguero": [], "Cajero": ["GET","POST"]},
-    "Cliente": {"Administrador": "ALL", "Bodeguero": ["GET","POST","PUT"], "Cajero": ["GET"]},
-    "Caja": {"Administrador": "ALL", "Bodeguero": [], "Cajero": ["GET","POST"]},
+    "Productos": {"Administrador": "ALL", "Bodeguero": "ALL", "Cajero": ["GET"]},
+    "Inventario": {"Administrador": ["ALL","GET","POST","PUT","DELETE"], "Bodeguero": ["GET","POST","PUT"], "Cajero": ["GET"]},
+    "Pedido": {"Administrador": ["ALL","GET","POST","PUT","DELETE"], "Bodeguero": ["ALL","GET","POST","PUT","DELETE"], "Cajero": []},
+    "Promocion": {"Administrador": ["ALL","GET","POST","PUT","DELETE"], "Bodeguero": [], "Cajero": ["GET"]},
+    "Venta": {"Administrador": ["ALL","GET","POST","PUT","DELETE"], "Bodeguero": [], "Cajero": ["ALL","GET","POST","PUT","DELETE"]},
+    "Cliente": {"Administrador": "ALL", "Bodeguero": [], "Cajero": "ALL"},
+    "Caja": {"Administrador": ["ALL","GET","POST","PUT","DELETE"], "Bodeguero": [], "Cajero": ["GET","POST","PUT"]},
     "Reportes": {
-        "Administrador": "ALL",
-        "Bodeguero": ["GET_Stock","GET_Pedidos"],
-        "Cajero": ["GET_Ventas","GET_Caja"]
+        "Administrador": ["GET_Stock","GET_Ventas","GET_Caja","GET_Clientes"],
+        "Bodeguero": ["GET_Stock"],
+        "Cajero": []
     },
 }
 
     
+def identificarUsuarioString(usuario: dict) -> str:
+    """Devuelve la identificación formateada como 'id-Nombre Completo' si es posible."""
+    if not usuario:
+        return ""
+    idu = usuario.get("idUsuario")
+    nombre = usuario.get("nombreCompleto") or usuario.get("usuario") or usuario.get("email") or ""
+    if idu is None:
+        return nombre
+    return f"{idu}-{nombre}"
+
+
 def protegerRuta(modulo: str, accion: str):
     def dependencia(token: str = Depends(oauth2Scheme)):
+        if token is None:
+            raise HTTPException(
+                status_code=ERROR_TOKEN_INVALIDO.codigoHttp,
+                detail=ERROR_TOKEN_INVALIDO.mensaje
+            )
         try:
             usuario=verificarToken(token)
         except JWTError:
@@ -78,7 +95,5 @@ def protegerRuta(modulo: str, accion: str):
                 detail="No tienes permiso para acceder a esta ruta"
             )
     return dependencia
-    
-    
     
     
