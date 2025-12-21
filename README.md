@@ -4,7 +4,15 @@ Incluye funcionalidades de usuarios, roles, productos, inventario, proveedores, 
 # SGM-DALCT (Tarea 02.03)-Documentación del Backend
 
 ## 1. Introducción
-Este documento describe la arquitectura, tecnologías, módulos y organización del código del backend del Sistema de Gestión de Minimercado DALCT Market (SGM-DALCT), desarrollado como parte de la tarea 02.03 de Ingeniería de Software. El backend está implementado utilizando **FastAPI** con **Python 3.12+** y utiliza **PostgreSQL 17** como base de datos, todo ello contenido en **Docker** para facilitar su despliegue y ejecución.
+
+El presente documento tiene como objetivo documentar de manera clara y estructurada la arquitectura del backend del sistema **SGM-DALCT Market**, detallando las tecnologías empleadas, la organización de los módulos y la estructura del código fuente. Esta documentación está orientada a facilitar la comprensión del funcionamiento interno del sistema, así como su mantenimiento, escalabilidad y futura extensión.
+
+El backend puede ser accedido mediante la documentación interactiva **Swagger (OpenAPI)**, la cual permite explorar y probar los endpoints disponibles. Dicha documentación se encuentra disponible en el siguiente enlace:
+https://t02-03-dalctmarket-grupo06.onrender.com/docs
+
+> **Nota:** El backend se encuentra desplegado en **Render**. Al acceder por primera vez, es posible que el servicio tarde algunos segundos en responder mientras se reactiva el contenedor (cold start) o sino se pude ejecutar localmente.
+
+
 ---
 
 ## 2. Tecnologías y herramientas utilizadas
@@ -28,50 +36,104 @@ Cada módulo funcional está agrupado en su propia carpeta con subcarpetas `mode
 
 ---
 
-## 4. Módulos del sistema (Resumen)
-1. **Módulo ParametrosSistema**
-   - Función: Gestionar parámetros configurables (IVA, nombreNegocio, direccionNegocio, telefonoNegocio, correoNegocio, logoNegocio).
-   - Entidades: `ParametroSistema`.
+## 4. Módulos del sistema
+1. Módulo ParametrosSistema
+   - Carpeta: app/ParametrosSistema
+   - Función: Gestión de parámetros generales del sistema.
+   - Entidad trabajada:
+     - ParametroSistema
 
-2. **Módulo Usuarios**
-   - Función: Gestión de usuarios y roles, autenticación y autorización.
-   - Entidades: `Usuario`, `Rol`.
+2. Módulo Usuarios
+   - Carpeta: app/Usuarios
+   - Función: Gestión de usuarios del sistema y roles. Autenticación y autorización mediante JWT.
+   - Entidades trabajadas:
+     - Usuario
+     - Rol
 
-3. **Módulo Productos**
-   - Función: Gestión de productos, categorías.
-   - Entidades: `Producto`, `CategoriaProducto`, `Proveedor`.
+3. Módulo Productos
+   - Carpeta: app/Productos
+   - Función: Gestión de productos, categorías y proveedores.
+   - Entidades trabajadas:
+     - Producto
+     - CategoriaProducto
+     - Proveedor
 
-4. **Módulo Inventario**
-   - Función: Control de existencias, cantidades mínimas y actualización automática tras ventas/pedidos.
-   - Entidades: `Inventario`.
+4. Módulo Inventario
+   - Carpeta: app/Inventario
+   - Función: Control de stock, cantidades disponibles y mínimos.
+   - Entidad trabajada:
+     - Inventario
 
-5. **Módulo Pedidos**
-   - Función: Registro, aprobación y recepción de pedidos para nuevos ingresos.
-   - Entidades: `Pedido`, `DetallePedido`
+5. Módulo Pedido
+   - Carpeta: app/Pedido
+   - Función: Registro y gestión de pedidos de abastecimiento.
+   - Entidades trabajadas:
+     - Pedido
+     - DetallePedido
 
-6. **Módulo Ventas**
-   - Función: Registro de ventas, cálculo de totales, aplicación de descuentos y generación de comprobantes.
-   - Entidades: `Venta`, `DetalleVenta`, `Promocion`.
 
-7. **Módulo Clientes**
-   - Función: Gestión de clientes y seguimiento de compras.
-   - Entidades: `Cliente`.
+6. Módulo Clientes
+   - Carpeta: app/Clientes
+   - Función: Registro y administración de clientes.
+   - Entidad trabajada:
+     - Cliente
 
-8. **Módulo Caja**
-   - Función: Apertura, cierre y cuadre de caja; control de efectivo y métodos de pago.
-   - Entidades: `CajaHistorial`.
+7. Módulo Venta
+   - Carpeta: app/Venta
+   - Función: Registro de ventas y aplicación de promociones.
+   - Entidades trabajadas:
+     - Venta
+     - DetalleVenta
+     - Promocion
 
-9. **Módulo Reportes**
-   - Función: Generación de reportes agregados a partir de datos de los módulos anteriores.
+8. Módulo Caja
+   - Carpeta: app/Caja
+   - Función: Apertura, cierre y control de caja.
+   - Entidad trabajada:
+     - CajaHistorial
 
+9. Módulo Reportes
+   - Carpeta: app/Reportes
+   - Función: Generación de reportes a partir de la información del sistema.
+   - No maneja entidades propias, consume datos de otros módulos.
+
+10. Configuración General
+   - Carpeta: app/configuracionGeneral
+   - Función: Configuración transversal del sistema.
+   - Componentes:
+     - Seguridad JWT
+     - Manejo de errores
+     - Esquemas generales
 ---
 
 ## 5. Organización de carpetas (recomendación)
-Estructura por módulo (mínimo recomendado):
+
+Estructura real del backend:
+
+backend/
+ ├── Dockerfile
+ ├── requerimientos.txt
+ └── app/
+     ├── main.py
+     ├── database.py
+     ├── Caja/
+     ├── Clientes/
+     ├── configuracionGeneral/
+     ├── Inventario/
+     ├── ParametrosSistema/
+     ├── Pedido/
+     ├── Productos/
+     ├── Reportes/
+     ├── Usuarios/
+     └── Venta/
+
+Cada módulo sigue la estructura:
+
+Estructura por módulo:
 ```
 <modulo>/
-  models/
-  repositories/
+  models/ 
+  repositories/ 
   services/
   controllers/
   schemas/
@@ -79,56 +141,107 @@ Estructura por módulo (mínimo recomendado):
 
 ---
 
-## 6. Repositorio de Código
-- **Enlace:** (poner enlace aquí)
+## 6. Variables de entorno
 
-### 6.1 Clonación y uso
-1. Clonar y acceder al backend:
+Variables de entorno utilizadas por el backend del sistema **SGM-DALCT Market** para su correcta configuración y funcionamiento:
+
+- **`DATABASE_URL`**: Cadena de conexión a la base de datos PostgreSQL. Es utilizada por SQLAlchemy para establecer comunicación con el servidor de base de datos.  
+  **Ejemplo:** `postgresql://dalctuser:Dalct1234@servicio-bdpostgres:5432/dalctmarket`
+
+- **`SECRET_KEY`**: Clave secreta utilizada para firmar y validar los tokens JWT, garantizando la seguridad y autenticidad en los procesos de autenticación y autorización.  
+  **Ejemplo:** `A1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6`
+
+- **`ALGORITHM`**: Algoritmo criptográfico empleado para la firma de los tokens JWT.  
+  **Ejemplo:** `HS256`
+
+- **`ACCESS_TOKEN_EXPIRE_MINUTES`**: Define el tiempo (en minutos) durante el cual un token de acceso es válido antes de expirar.  
+  **Ejemplo:** `30`
+
+- **`TZ`**: Zona horaria configurada para el sistema, utilizada para el manejo correcto de fechas y horas en registros, ventas y auditorías.  
+  **Ejemplo:** `America/Guayaquil`
+
+Estas variables permiten separar la configuración del código fuente, fortaleciendo la seguridad y facilitando el despliegue del backend en distintos entornos.
+
+
+
+## 7. Repositorio de Código
+- **Enlace:** [Repositorio](https://github.com/Damian2044/T02_03_DALCTMarket_Grupo06.git)
+
+### 7.1 Clonación y uso
+##### 7.1.1 Clonar y acceder al backend:
 ```bash
 git clone https://github.com/Damian2044/T02_03_DALCTMarket_Grupo06.git
 cd T02_03_DALCTMarket_Grupo06
 ```
-2. Ejecutar con Docker Compose (recomendado):
+
+#### 7.1.2 Ejecutar con Docker Compose (recomendado):
 ```bash
 docker compose up --build
 # o en segundo plano:
 # docker compose up -d --build
 ```
-También puede ejecutarse localmente pero se debe crear y configurar la base de datos PostgreSQL manualmente:
-1. Instalar dependencias:
+Este método levanta automáticamente el backend junto con la base de datos PostgreSQL, evitando configuraciones manuales y asegurando un entorno consistente.
+
+#### 7.1.3 Ejecución local:
+También puede ejecutarse de forma local, pero en este caso se debe crear y configurar manualmente la base de datos PostgreSQL y definir correctamente las variables de entorno.
+
+#### 7.1.3.1 Instalar dependencias:
 ```bash
 pip install -r requerimientos.txt
 ```
-2. Inicar el proyecto:
+
+#### 7.1.3.2 Iniciar el proyecto:
 ```bash
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
-4. La documentación interactiva estará disponible en:
 
+## 8. Documentación interactiva:
 - Local: http://localhost:8000/docs
 - Deploy: https://t02-03-dalctmarket-grupo06.onrender.com/docs
 
+Nota: El backend está desplegado en Render, por lo que al acceder por primera vez puede existir un tiempo de espera mientras el servicio se reactiva (cold start).
+
+## 8. Datos de prueba 
+
+El sistema incluye **usuarios por defecto** con el objetivo de facilitar las pruebas funcionales y el acceso inicial a la aplicación.  
+El **método de autenticación** se realiza mediante la **cédula del usuario** (`cedulaUsuario`).
+
+> **Nota:** Todos los usuarios listados utilizan la misma contraseña por defecto:  
+> **`1234`**
+
+### Tabla de usuarios por defecto
+
+| Nombre completo         | Usuario / Cédula (login) | Rol |
+|-------------------------|--------------------------|-----|
+| admin                   | `admin`                  | Administrador |
+| bodeguero               | `bodeguero`              | Bodeguero |
+| cajero                  | `cajero`                 | Cajero |
+| Damian Barahona         | `1750834515`             | Administrador |
+| Kenin Cayambe           | `1750834516`             | Bodeguero |
+| Sthalin Chasipanta      | `1750834517`             | Bodeguero |
+| Cristian Licto          | `1750834518`             | Cajero |
+| Juan Tandazo            | `1750834519`             | Cajero |
+
+
+Además de los usuarios, el sistema inicializa automáticamente **datos básicos de otros módulos**, con el fin de permitir el uso inmediato de la aplicación sin configuraciones manuales adicionales. Entre estos datos se incluyen:
+- **Parámetros del sistema:** valores iniciales de configuración general.
+- **Roles de usuario:** Administrador(id=1), Bodeguero(id=2) y Cajero(id=3).
+- **Categorías de productos:** categorías base para la gestión del inventario.
+- **Productos de ejemplo:** productos asociados a cada categoría.
+- **Clientes de prueba:** registros básicos para pruebas de ventas.
+
+Estos datos se crean automáticamente durante la inicialización del sistema y están destinados para **entornos de desarrollo y pruebas**.
 ---
 
-## 7. Distribución de tareas por integrante
-| Integrante | Tareas |
-|---|---|
-| Damian Barahona | Configuración inicial de FastAPI, Pydantic y SQLAlchemy. Desarrollo completo de `ParametrosSistema` y `Usuario`.
-| Kenin Cayambe | Desarrollo completo de  `Clientes`(models, repositories, services, controllers).
-| Sthalin Chasipanta | Desarrollo completo de `Pedidos` y `Venta` (models, repositories, services, controllers).
-| Cristian Licto | Desarrollo completo de `Productos` e `Inventario` (models, repositories, services, controllers).
-| Juan Tandazo | Desarrollo completo de `Caja` y `Reportes` (services y controllers, consumo de datos de otros módulos).
+## 9. Distribución de tareas por integrante:
+
+| Integrante            | Tareas |
+|-----------------------|--------|
+| **Damian Barahona**   | • Configuración inicial de FastAPI, Pydantic y SQLAlchemy.<br>• Desarrollo completo del módulo **Parámetros del Sistema** y **Usuarios**. |
+| **Kenin Cayambe**     | • Desarrollo completo del módulo **Clientes** (models, repositories, services y controllers). |
+| **Sthalin Chasipanta**| • Desarrollo completo de los módulos **Pedido** y **Venta** (models, repositories, services y controllers). |
+| **Cristian Licto**    | • Desarrollo del **PDF**, incluyendo descripción de la aplicación, tecnologías utilizadas, arquitectura, repositorio y funcionamiento de los servicios. |
+| **Juan Tandazo**     | • Desarrollo completo de los módulos **Productos**, **Inventario**, **Caja** y **Reportes** (services y controllers, consumo de datos de otros módulos). |
+
 
 ---
-
-## 8. Usuarios por defecto (pruebas)
-- Se incluyen **usuarios por defecto** para facilitar pruebas. **Acceso:** identificación mediante **cédula** (`cedulaUsuario`).
-**Tabla de usuarios por defecto**
-
-| Usuario | Cédula (login) | Rol |
-|---|---|---|
-| admin | `admin` | Administrador |
-| bodeguero | `bodeguero` | Bodeguero |
-| cajero | `cajero` | Cajero |
-
-todos con la password de 1234.
