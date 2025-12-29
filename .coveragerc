@@ -1,0 +1,22 @@
+[run]
+# Carpeta donde está tu código principal
+source = backend/app
+
+# Omitir carpetas y archivos que no quieres medir
+omit =
+    */tests/*
+    */__init__.py
+
+[report]
+# Mostrar líneas faltantes en el reporte
+show_missing = True
+
+# Ordenar los archivos por porcentaje de cobertura
+sort = cover
+
+# Número de decimales en porcentaje
+precision = 2
+
+[html]
+# Carpeta donde se generará el reporte HTML
+directory = coverage_html_report

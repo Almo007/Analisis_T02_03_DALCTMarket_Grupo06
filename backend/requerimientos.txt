@@ -6,4 +6,11 @@ pydantic
 pydantic[email]
 python-jose[cryptography]
 python-multipart
+# Librerías principales para pruebas unitarias
+pytest          # Framework principal de tests
+pytest-mock     # Para crear mocks de servicios/repositorios
+# Librería necesaria para TestClient de FastAPI
+httpx           # Cliente HTTP para simular requests a endpoints
+# Cobertura de código
+coverage        # Medir porcentaje de cobertura de los tests
 
