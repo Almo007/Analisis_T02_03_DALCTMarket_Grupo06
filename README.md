@@ -245,3 +245,68 @@ Estos datos se crean automáticamente durante la inicialización del sistema y e
 
 
 ---
+
+# Tarea 2.04 - Pruebas unitarias para aplicaciones
+
+## Test
+
+- **Organización:** Las **pruebas unitarias** con `pytest` están en `backend/tests/` (por ejemplo, `backend/tests/test_inicio.py`).
+
+- **Herramientas usadas:**
+  - `pytest`: Framework principal para ejecutar las pruebas unitarias y automatizar la ejecución de los casos de prueba.
+  - `unittest`: Librería estándar de Python utilizada para estructurar pruebas específicas y complementar pytest en casos controlados.
+  - `unittest.mock`: Se usa para simular dependencias externas como repositorios o la base de datos, permitiendo probar los servicios de manera aislada.
+  - `TestClient` (FastAPI): Cliente de pruebas que permite simular solicitudes HTTP a los endpoints, validar respuestas y códigos HTTP sin levantar un servidor real.
+  - `coverage.py`: Herramienta para medir el porcentaje de cobertura de código alcanzado por las pruebas unitarias y generar reportes HTML visualizables.
+
+- **Organización del proyecto (enfocado en tests):**
+
+```text
+backend/
+└── tests/
+  ├── test_inicio.py# Test de inicio
+  ├── mocks_models/# Mocks y modelos para pruebas 
+  ├── Caja/
+  │   ├── test_caja_controller.py
+  │   └── test_caja_service.py
+  ├── Clientes/
+  ├── Inventario/
+  ├── ParametrosSistema/
+  ├── Pedido/
+  ├── Productos/
+  ├── Reportes/
+  ├── Usuarios/
+  └── Venta/
+```
+
+- **Requisitos:** Use **Python 3.12+**. Recomendado crear y activar un entorno virtual antes de instalar dependencias.
+
+- **Ejecutar las pruebas (local):**
+
+  1. Clonar el repositorio y acceder al proyecto:
+
+  ```bash
+  git clone https://github.com/Damian2044/T02_03_DALCTMarket_Grupo06.git
+  cd T02_03_DALCTMarket_Grupo06
+  ```
+
+  2. Instalar dependencias (desde la raíz del proyecto):
+
+  ```bash
+  pip install -r backend/requerimientos.txt
+  ```
+
+  3. Ejecutar `pytest` desde la raíz del proyecto:
+
+  ```bash
+  pytest
+  # o ejecutar sólo las pruebas del backend:
+  pytest backend/tests
+  ```
+
+- **Reporte de coverage:** El reporte HTML de cobertura se encuentra versionado en el repositorio (carpeta `coverage_html_report/`) y también fue desplegado para su visualización en:
+  https://t02-04-dalct-market-grupo06-coverag.vercel.app/
+
+- **Resultado actual:** Coverage total de **68.75%**.
+
+![Reporte de coverage (68.75%)](imagenes/imagen1_coverage.png)
